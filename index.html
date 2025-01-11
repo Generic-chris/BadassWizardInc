@@ -121,18 +121,43 @@
         <div class="conversion" id="conversion-rate">1 Badass Wizard Coin</div>
         <div class="timestamp" id="timestamp"></div>
 
-        <div class="dropdown">
-            <label for="currency-select">Select Currency:</label>
-            <select id="currency-select">
-                <option value="CAD">Canadian Dollar</option>
-                <option value="USD">US Dollar</option>
-                <option value="EUR">Euro</option>
-                <option value="GBP">British Pound</option>
-                <option value="JPY">Japanese Yen</option>
-            </select>
-        </div>
+      <div class="dropdown">
+    <label for="currency-select">Select Currency:</label>
+    <select id="currency-select">
+        <option value="CAD">Canadian Dollar</option>
+        <option value="USD">US Dollar</option>
+        <option value="EUR">Euro</option>
+        <option value="GBP">British Pound</option>
+        <option value="JPY">Japanese Yen</option>
+        <option value="ZWL">Zimbabwean Dollar</option>
+    </select>
+</div>
 
-        <div class="inputs">
+<script>
+    const conversionRates = {
+        CAD: 1,
+        USD: 0.75,
+        EUR: 0.69,
+        GBP: 0.60,
+        JPY: 110,
+        ZWL: 362.9 // Example rate, you can adjust to the current exchange rate
+    };
+
+    function updateCurrency() {
+        const currencySelect = document.getElementById('currency-select');
+        const selectedCurrency = currencySelect.value;
+        const rate = conversionRates[selectedCurrency];
+        const currencyName = currencySelect.options[currencySelect.selectedIndex].text;
+
+        document.getElementById('conversion-rate').textContent = `${rate} Badass Wizard Coin${rate !== 1 ? 's' : ''}`;
+        document.getElementById('currency-amount').textContent = '1';
+        document.getElementById('currency-name').textContent = currencyName;
+    }
+
+    document.getElementById('currency-select').addEventListener('change', updateCurrency);
+    updateCurrency(); // Initialize with the default value
+</script>
+     <div class="inputs">
             <div>
                 <strong id="currency-amount">1</strong>
                 <br><span id="currency-name">Canadian Dollar</span>
