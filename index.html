@@ -100,7 +100,7 @@
         <div class="subheader">Study of Fingerprints</div>
         <div class="header">1 Canadian Dollar equals</div>
         <div class="conversion">1 Badass Wizard Coin</div>
-        <div class="timestamp">Jan 10, 3:28 p.m. MST - Disclaimer</div>
+        <div class="timestamp" id="timestamp"></div>
 
         <div class="inputs">
             <div>
@@ -154,6 +154,26 @@
     </div>
 
     <script>
+        function updateTimestamp() {
+            const options = { 
+                timeZone: 'America/Denver', 
+                hour12: true,
+                weekday: 'short',
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            };
+            const currentDate = new Date().toLocaleString('en-US', options);
+            document.getElementById('timestamp').textContent = `${currentDate} MST`;
+        }
+
+        // Update timestamp every second
+        setInterval(updateTimestamp, 1000);
+        updateTimestamp();  // Initialize the timestamp immediately
+
         const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, {
             type: 'line',
@@ -198,6 +218,11 @@
                     }
                 }
             }
+        });
+    </script>
+</body>
+</html>
+
         });
     </script>
 </body>
