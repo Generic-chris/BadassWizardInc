@@ -251,6 +251,7 @@
 
     <div class="hours">
         <h2>Server Hours</h2>
+        <div id="server-status" class="text-center mb-4"></div>
         <ul>
             <li>Monday - Thursday: 3:30 PM - 10:00 PM</li>
             <li>Friday: 12:50 PM - 11:00 PM</li>
@@ -357,6 +358,32 @@
                 }
             }
         });
+
+        function checkServerStatus() {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const currentTime = hours * 60 + minutes;
+
+            let isOpen = false;
+            if (day >= 1 && day <= 4) { // Monday to Thursday
+                isOpen = currentTime >= (15 * 60 + 30) && currentTime <= (22 * 60); // 3:30 PM to 10:00 PM
+            } else if (day === 5) { // Friday
+                isOpen = currentTime >= (12 * 60 + 50) && currentTime <= (23 * 60); // 12:50 PM to 11:00 PM
+            } else { // Saturday and Sunday
+                isOpen = currentTime >= (10 * 60) && currentTime <= (24 * 60); // 10:00 AM to 12:00 AM
+            }
+
+            const statusElement = document.getElementById('server-status');
+            statusElement.innerHTML = `<div style="font-size: 18px; font-weight: bold; color: ${isOpen ? '#4CAF50' : '#f44336'}">
+                Server is currently ${isOpen ? 'OPEN' : 'CLOSED'}
+            </div>`;
+        }
+
+        // Update status immediately and then every minute
+        checkServerStatus();
+        setInterval(checkServerStatus, 60000);
     </script>
   </body>
 </html>
