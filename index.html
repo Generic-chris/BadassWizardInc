@@ -6,11 +6,13 @@
     <title>Wizards of Massive Dactylographigists</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Existing styles */
+        /* Your existing styles remain unchanged */
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="header">Wizards of Massive Dactylographigists</div>
+        <div class="subheader">Study of Fingerprints</div>
         <div class="header" id="conversion-title">1 Canadian Dollar equals</div>
         <div class="conversion" id="conversion-rate">1 Badass Wizard Coin</div>
         <div class="timestamp" id="timestamp"></div>
@@ -32,7 +34,7 @@
                 <br><span id="currency-name">Canadian Dollar</span>
             </div>
             <div>
-                <strong id="wizard-amount">1</strong>
+                <strong>1</strong>
                 <br>Badass Wizard Coin
             </div>
         </div>
@@ -40,6 +42,67 @@
         <div class="chart-container">
             <canvas id="myChart"></canvas>
         </div>
+    </div>
+
+    <div class="members">
+        <h2>Members List</h2>
+        <ul>
+            <li>NIKO</li>
+            <li>Chris</li>
+            <li>jaxson</li>
+            <li>Rad</li>
+            <li>Tristan</li>
+            <li>shane?</li>
+            <li>firelord?</li>
+            <li>Femboy?</li>
+        </ul>
+    </div>
+
+    <div class="leaderboard">
+        <h2>Leaderboard</h2>
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>No Lifers</th>
+                    <th>Capitalism</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Player 1</td>
+                    <td>Player 1</td>
+                </tr>
+                <tr>
+                    <td>Player 2</td>
+                    <td>Player 2</td>
+                </tr>
+                <tr>
+                    <td>Player 3</td>
+                    <td>Player 3</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="businesses">
+        <h2>Business List</h2>
+        <ul>
+        </ul>
+    </div>
+
+    <div class="hours">
+        <h2>Server Hours</h2>
+        <ul>
+            <li>Monday - Thursday: 3:30 PM - 10:00 PM</li>
+            <li>Friday: 12:50 PM - 11:00 PM</li>
+            <li>Saturday - Sunday: 10:00 AM - 12:00 AM</li>
+        </ul>
+    </div>
+
+    <div class="events">
+        <h2>Upcoming Events</h2>
+        <ul>
+        </ul>
     </div>
 
     <script>
@@ -77,12 +140,13 @@
             const rate = conversionRates[selectedCurrency];
             const currencyName = currencySelect.options[currencySelect.selectedIndex].text;
 
+            // Update the conversion title
+            document.getElementById('conversion-title').textContent = `1 ${currencyName} equals`;
+            // Update the conversion rate
             document.getElementById('conversion-rate').textContent = `${rate} Badass Wizard Coin${rate !== 1 ? 's' : ''}`;
+            // Update the input values
             document.getElementById('currency-amount').textContent = '1';
             document.getElementById('currency-name').textContent = currencyName;
-
-            // Update the conversion title dynamically
-            document.getElementById('conversion-title').textContent = `1 ${currencyName} equals`;
         }
 
         document.getElementById('currency-select').addEventListener('change', updateCurrency);
