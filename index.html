@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wizards of Massive Dactylographigists</title>
@@ -120,8 +120,8 @@
             background-color: #333;
         }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
         <div class="header">Wizards of Massive Dactylographigists</div>
         <div class="subheader">Study of Fingerprints</div>
@@ -140,13 +140,19 @@
             </select>
         </div>
 
+        <div class="amount-input" style="margin: 20px 0;">
+            <label for="amount-input">Amount:</label>
+            <input type="number" id="amount-input" value="1" min="0" step="0.01" 
+                   style="background-color: #222; color: white; border: 1px solid #444; padding: 8px; border-radius: 5px;">
+        </div>
+
         <div class="inputs">
             <div>
                 <strong id="currency-amount">1</strong>
                 <br><span id="currency-name">Canadian Dollar</span>
             </div>
             <div>
-                <strong>1</strong>
+                <strong id="wizard-amount">1</strong>
                 <br>Badass Wizard Coin
             </div>
         </div>
@@ -234,9 +240,8 @@
             document.getElementById('timestamp').textContent = `${currentDate} MST`;
         }
 
-        // Update timestamp every second
         setInterval(updateTimestamp, 1000);
-        updateTimestamp();  // Initialize the timestamp immediately
+        updateTimestamp();
 
         const conversionRates = {
             CAD: 1,
@@ -248,21 +253,23 @@
 
         function updateCurrency() {
             const currencySelect = document.getElementById('currency-select');
+            const amountInput = document.getElementById('amount-input');
             const selectedCurrency = currencySelect.value;
+            const amount = parseFloat(amountInput.value) || 1;
             const rate = conversionRates[selectedCurrency];
             const currencyName = currencySelect.options[currencySelect.selectedIndex].text;
+            const totalWizardCoins = amount * rate;
 
-            // Update the conversion title
-            document.getElementById('conversion-title').textContent = `1 ${currencyName} equals`;
-            // Update the conversion rate
-            document.getElementById('conversion-rate').textContent = `${rate} Badass Wizard Coin${rate !== 1 ? 's' : ''}`;
-            // Update the input values
-            document.getElementById('currency-amount').textContent = '1';
+            document.getElementById('conversion-title').textContent = `${amount} ${currencyName} equals`;
+            document.getElementById('conversion-rate').textContent = `${totalWizardCoins.toFixed(2)} Badass Wizard Coin${totalWizardCoins !== 1 ? 's' : ''}`;
+            document.getElementById('currency-amount').textContent = amount.toFixed(2);
             document.getElementById('currency-name').textContent = currencyName;
+            document.getElementById('wizard-amount').textContent = totalWizardCoins.toFixed(2);
         }
 
         document.getElementById('currency-select').addEventListener('change', updateCurrency);
-        updateCurrency(); // Initialize with the default value
+        document.getElementById('amount-input').addEventListener('input', updateCurrency);
+        updateCurrency();
 
         const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, {
@@ -310,5 +317,5 @@
             }
         });
     </script>
-</body>
+  </body>
 </html>
