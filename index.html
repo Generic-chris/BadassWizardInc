@@ -68,7 +68,7 @@
             height: 300px;
         }
 
-        .members, .businesses, .hours, .events {
+        .members, .businesses, .hours, .events, .leaderboard {
             margin: 20px;
             text-align: left;
             max-width: 600px;
@@ -91,6 +91,21 @@
             padding: 10px;
             border: 1px solid #444;
             border-radius: 5px;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #444;
+        }
+
+        .leaderboard-table th {
+            background-color: #333;
         }
     </style>
 </head>
@@ -130,6 +145,32 @@
             <li>firelord?</li>
             <li>Femboy?</li>
         </ul>
+    </div>
+
+    <div class="leaderboard">
+        <h2>Leaderboard</h2>
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>No Lifers</th>
+                    <th>Capitalism</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Player 1</td>
+                    <td>Player 1</td>
+                </tr>
+                <tr>
+                    <td>Player 2</td>
+                    <td>Player 2</td>
+                </tr>
+                <tr>
+                    <td>Player 3</td>
+                    <td>Player 3</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="businesses">
@@ -222,6 +263,7 @@
     </script>
 </body>
 </html>
+
 
         });
     </script>
