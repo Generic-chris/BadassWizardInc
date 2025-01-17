@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="GMT-7">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wizards of Massive Dactylographigists</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wizard-coin-converter</title>
+    <meta name="description" content="Lovable Generated Project" />
+    <meta name="author" content="Lovable" />
+    <meta property="og:image" content="/og-image.png" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -18,8 +21,6 @@
             justify-content: flex-start;
             height: 100vh;
         }
-    <div class="phone-number">+1 (330) 951-3545</div>
-    <div class="container">
 
         /* Add animation keyframes */
         @keyframes fadeIn {
@@ -162,6 +163,39 @@
         .leaderboard-table th {
             background-color: #333;
         }
+
+        /* Add new style for phone number */
+        .phone-number {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(34, 34, 34, 0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            transition: all 0.2s ease;
+            z-index: 1000;
+        }
+
+        .phone-number a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .phone-number:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .phone-number {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
     </style>
   </head>
   <body>
@@ -265,6 +299,13 @@
         <h2>Upcoming Events</h2>
         <ul>
         </ul>
+    </div>
+
+    <div class="phone-number">
+        <a href="tel:+13309513545">
+            <span>Call us: </span>
+            +1 (330) 951-3545
+        </a>
     </div>
 
     <script>
